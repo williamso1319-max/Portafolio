@@ -5,30 +5,42 @@ import { useState } from 'react'
 function Menu(){
     const [isOpen, setIsOpen] = useState(false)
 
+    const handleSmoothScroll = (e, targetId) => {
+        e.preventDefault()
+        const element = document.querySelector(targetId)
+        if (element) {
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            })
+            setIsOpen(false)
+        }
+    }
+
     return(
         <header className="bg-white shadow-md sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
+                <div className="flex justify-between items-center h-16" >
                     {/* logo */}
                     <a href="/" className="text-2xl font-extrabold text-gray-800">
                         FlowState
                     </a>
 
                     {/* desktop nav */}
-                    <nav className="hidden md:flex space-x-6">
-                        <a href="#caracte" className="text-gray-700 hover:text-gray-900" onClick={() => setIsOpen(false)}>
+                    <nav className="hidden md:flex space-x-6"  >
+                        <a href="#caracte" className="text-gray-700 hover:text-blue-600 transition" onClick={(e) => handleSmoothScroll(e, '#caracte')}>
                             Características
                         </a>
-                        <a href="#precios" className="text-gray-700 hover:text-gray-900" onClick={() => setIsOpen(false)}>
+                        <a href="#precios" className="text-gray-700 hover:text-blue-600 transition" onClick={(e) => handleSmoothScroll(e, '#precios')}>
                             Precios
                         </a>
-                        <a href="#faq" className="text-gray-700 hover:text-gray-900" onClick={() => setIsOpen(false)}>
+                        <a href="#faq" className="text-gray-700 hover:text-blue-600 transition" onClick={(e) => handleSmoothScroll(e, '#faq')}>
                             FAQ
                         </a>
                         <a
                             href="#prueba"
-                            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-                            onClick={() => setIsOpen(false)}
+                            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                            onClick={(e) => handleSmoothScroll(e, '#prueba')}
                         >
                             Pruébalo Gratis
                         </a>
@@ -57,19 +69,19 @@ function Menu(){
                 {/* mobile menu */}
                 <div className={`${isOpen ? 'block' : 'hidden'} md:hidden`}>
                     <nav className="flex flex-col space-y-2 py-4">
-                        <a href="#caracte" className="text-gray-700 px-2" onClick={() => setIsOpen(false)}>
+                        <a href="#caracte" className="text-gray-700 px-2 transition hover:text-blue-600" onClick={(e) => handleSmoothScroll(e, '#caracte')}>
                             Características
                         </a>
-                        <a href="#precios" className="text-gray-700 px-2" onClick={() => setIsOpen(false)}>
+                        <a href="#precios" className="text-gray-700 px-2 transition hover:text-blue-600" onClick={(e) => handleSmoothScroll(e, '#precios')}>
                             Precios
                         </a>
-                        <a href="#faq" className="text-gray-700 px-2" onClick={() => setIsOpen(false)}>
+                        <a href="#faq" className="text-gray-700 px-2 transition hover:text-blue-600" onClick={(e) => handleSmoothScroll(e, '#faq')}>
                             FAQ
                         </a>
                         <a
                             href="#prueba"
-                            className="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg mx-2 text-center"
-                            onClick={() => setIsOpen(false)}
+                            className="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg mx-2 text-center transition hover:bg-blue-700"
+                            onClick={(e) => handleSmoothScroll(e, '#prueba')}
                         >
                             Pruébalo Gratis
                         </a>
