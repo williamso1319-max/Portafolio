@@ -11,6 +11,7 @@ import CTA from './components/section/CTA/CTA'
 import PieDePagina from './components/section/Footer/Footer'
 
 
+
 function App() {
    return (
     <>
@@ -24,6 +25,7 @@ function App() {
      <FAQ/>
      <CTA/>
      <PieDePagina/>
+     
     </>
   )
 }
